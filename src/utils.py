@@ -18,30 +18,6 @@ from utils_project_dirs import PROJECT_DIR
 ################################  GENERIC  #################################
 ############################################################################
 
-def load_config(cnf_dir=PROJECT_DIR, cnf_name="config.yml"):
-    """
-    load the yaml file
-    """
-    config_file = open(os.path.join(cnf_dir, cnf_name))
-    return yaml.load(config_file, yaml.FullLoader)
-
-
-def download_proxy(url):
-    """
-    Return the proxy.
-
-    Args:
-    url (str): url to downoad the proxy (default in config)
-
-    Returns:
-    (str): proxy value
-    """
-    text = requests.get(url, verify=False).text
-    proxy = re.findall(r"PROXY (proxy.*)\;\"", text)[0].replace(";", "")
-
-    return "http://" + proxy
-
-
 def list_all_filepaths(common_dir: str, folder=None, extension: str = ".txt"):
     """Get a list of all filepaths with a provided extention
 
